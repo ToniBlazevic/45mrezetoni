@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="startCount()">Start count!</button>
+    <input type="text" id="txt">
+    <button onclick="stopCount()">Stop count!</button>
+
+    <button onclick="startCountInterval()">Start count!</button>
+    <input type="text" id="txt1">
+    <button onclick="stopCountInterval()">Stop count!</button>
+
+    <script>
+        var c = 0;
+        var t = 0;
+        var inter = 0;
+        var timer_is_on = false;
+
+        function startCount() {
+            if (timer_is_on == false) {
+                timer_is_on = true;
+                timedCount();
+            }
+        }
+
+        function timedCount() {
+            document.getElementById("txt").value = c;
+            c = c + 1;
+            t = setTimeout(timedCount, 1000);
+        }
+
+        function stopCount() {
+            clearTimeout(t);
+            timer_is_on = false;
+        }
+
+
+        function startCountInterval() {
+            inter = setInterval(
+                function () {
+                    document.getElementById("txt").value = c;
+                    c = c + 1;
+                }, 1000)
+        }
+    </script>
+</body>
+
+</html>
